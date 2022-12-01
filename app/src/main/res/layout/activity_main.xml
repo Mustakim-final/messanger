@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+  <include layout="@layout/bar_layout"
+      android:id="@+id/tool_bar_ID">
+
+  </include>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:elevation="10dp"
+        android:layout_below="@id/tool_bar_ID"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@id/tool_bar_ID">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log In"
+                android:gravity="center"
+                android:textSize="20sp">
+
+            </TextView>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Gmail.."
+                android:textSize="20sp"
+                android:layout_margin="20dp"
+                android:id="@+id/loginEmail_ID">
+
+            </com.rengwuxian.materialedittext.MaterialEditText>
+
+            <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Password.."
+                android:layout_margin="20dp"
+                android:inputType="textPassword"
+                android:textSize="20sp"
+                android:id="@+id/loginPassword_ID">
+
+            </com.rengwuxian.materialedittext.MaterialEditText>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Log in"
+                android:layout_margin="20dp"
+                android:id="@+id/loginBtn_ID">
+
+            </Button>
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:id="@+id/signProgressBar_ID"
+                android:layout_gravity="center"
+                android:visibility="gone">
+
+            </ProgressBar>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Are You not sign Up? go to sign up"
+                android:textSize="20sp"
+                android:gravity="center"
+                android:id="@+id/goSignUp_ID">
+
+            </TextView>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:padding="8dp"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="37dp"
+            android:layout_height="37dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:visibility="gone"
+            android:id="@+id/chat_image_ID">
+        </de.hdodenhof.circleimageview.CircleImageView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hello"
+            android:layout_marginLeft="15dp"
+            android:padding="10dp"
+            android:id="@+id/chat_text_ID"
+            android:textSize="20sp"
+            android:layout_toRightOf="@id/chat_image_ID"
+            android:background="@drawable/left_chat_draw">
+
+        </TextView>
+
+        <ImageView
+            android:id="@+id/post_Photo"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_below="@+id/chat_text_ID"
+            android:layout_marginTop="2dp"
+            android:scaleX="1.5"
+            android:src="@drawable/ic_baseline_image_24">
+
+        </ImageView>
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>

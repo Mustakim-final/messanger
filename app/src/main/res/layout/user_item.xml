@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/userProfileListImg_ID"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@mipmap/ic_launcher_round">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:id="@+id/userProfileList_ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="35dp"
+        android:layout_toEndOf="@id/userProfileListImg_ID"
+        android:layout_toRightOf="@+id/userProfileListImg_ID"
+        android:text="username">
+
+    </TextView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:civ_border_width="10dp"
+        app:civ_border_color="#FFC107"
+        android:layout_marginLeft="-15dp"
+        android:id="@+id/onLine_ID"
+        android:visibility="gone"
+        android:layout_below="@id/userProfileList_ID"
+        android:layout_toEndOf="@id/userProfileListImg_ID"
+        android:layout_toRightOf="@id/userProfileListImg_ID"
+        android:src="@drawable/ic_launcher_foreground">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        app:civ_border_width="10dp"
+        app:civ_border_color="#B81F53"
+        android:layout_marginLeft="-15dp"
+        android:visibility="gone"
+        android:id="@+id/offLine_ID"
+        android:layout_below="@id/userProfileList_ID"
+        android:layout_toEndOf="@id/userProfileListImg_ID"
+        android:layout_toRightOf="@id/userProfileListImg_ID"
+        android:src="@drawable/ic_launcher_foreground">
+
+    </de.hdodenhof.circleimageview.CircleImageView>
+
+    <TextView
+        android:id="@+id/lastMessage_ID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/userProfileList_ID"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="25dp"
+        android:text="Message">
+
+    </TextView>
+
+
+</RelativeLayout>
