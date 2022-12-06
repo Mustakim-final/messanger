@@ -13,25 +13,26 @@
       </Target>
     </targetSelectedWithDropDown>
     <timeTargetWasSelectedWithDropDown value="2022-04-21T17:01:25.389343Z" />
-    <targetsSelectedWithDialog>
+    <multipleDevicesSelectedInDropDown value="true" />
+    <runningDeviceTargetsSelectedWithDialog>
       <Target>
-        <type value="QUICK_BOOT_TARGET" />
+        <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\mdmus\.android\avd\Pixel_XL_Edited_API_29_2.avd" />
+            <type value="SERIAL_NUMBER" />
+            <value value="613f073e" />
           </Key>
         </deviceKey>
       </Target>
       <Target>
-        <type value="QUICK_BOOT_TARGET" />
+        <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\mdmus\.android\avd\Pixel_XL_Edited_API_29.avd" />
+            <type value="SERIAL_NUMBER" />
+            <value value="R58N842BX2N" />
           </Key>
         </deviceKey>
       </Target>
-    </targetsSelectedWithDialog>
+    </runningDeviceTargetsSelectedWithDialog>
   </component>
 </project>
