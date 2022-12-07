@@ -16,10 +16,22 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
 public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onStart() {
+        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+        if (firebaseUser!=null){
+            Intent intent=new Intent(MainActivity.this,HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }
+        super.onStart();
+    }
 
     private MaterialEditText gmailEdit,passwordEdit;
     private Button button;

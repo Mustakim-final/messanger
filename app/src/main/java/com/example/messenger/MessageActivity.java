@@ -7,13 +7,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -22,6 +26,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.downloader.Error;
+import com.downloader.OnCancelListener;
+import com.downloader.OnDownloadListener;
+import com.downloader.OnPauseListener;
+import com.downloader.OnProgressListener;
+import com.downloader.OnStartOrResumeListener;
+import com.downloader.PRDownloader;
+import com.downloader.Progress;
 import com.example.messenger.Adapter.MessageAdapter;
 import com.example.messenger.Model.Chats;
 import com.example.messenger.Model.Users;
@@ -50,6 +62,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -311,6 +324,7 @@ public class MessageActivity extends AppCompatActivity {
 
     private void sendNotitfication(String userID, String username, String msg) {
         DatabaseReference tokens=FirebaseDatabase.getInstance().getReference("token");
+
         Query query=tokens.orderByKey().equalTo(userID);
         query.addValueEventListener(new ValueEventListener() {
             @Override
@@ -318,9 +332,9 @@ public class MessageActivity extends AppCompatActivity {
                 for (DataSnapshot dataSnapshot:snapshot.getChildren()){
                     Token token=dataSnapshot.getValue(Token.class);
                     Data data=new Data(firebaseUser.getUid(),R.mipmap.ic_launcher,username+":"+msg,"New Message",userID);
-                    Notification notification=new Notification("message",msg);
+                    Notification notification=new Notification(username,msg,R.mipmap.ic_launcher);
 
-                    Sender sender=new Sender(data,token.getToken(),notification);
+                    Sender sender=new Sender(token.getToken(),data,notification);
                     apiService.sendNotification(sender)
                             .enqueue(new Callback<MyResponse>() {
                                 @Override
@@ -379,20 +393,17 @@ public class MessageActivity extends AppCompatActivity {
                         @Override
                         public void onDelete(int position) {
 
-                            Toast.makeText(MessageActivity.this,"Position: "+position,Toast.LENGTH_SHORT).show();
-
                             Chats selectedItem=chatsList.get(position);
-
                             String key=selectedItem.getKey();
+                            reference.child(key).removeValue();
 
-
-                            StorageReference storageReference=firebaseStorage.getReferenceFromUrl(selectedItem.getImagePost());
-                            storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    reference.child(key).removeValue();
-                                }
-                            });
+//                            StorageReference storageReference=firebaseStorage.getReferenceFromUrl(selectedItem.getImagePost());
+//                            storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                @Override
+//                                public void onSuccess(Void unused) {
+//
+//                                }
+//                            });
 
 
 
@@ -400,7 +411,12 @@ public class MessageActivity extends AppCompatActivity {
 
                         @Override
                         public void onDownload(int position) {
+                            Chats selectedItem=chatsList.get(position);
+                            String key=selectedItem.getKey();
+                            String url=selectedItem.getImagePost();
 
+
+                            downloadImage(url,position);
                         }
                     });
                 }
@@ -412,6 +428,69 @@ public class MessageActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void downloadImage(String url, int position) {
+        ProgressDialog pd=new ProgressDialog(this);
+        pd.setMessage("Downloading...");
+        pd.setCancelable(false);
+        pd.show();
+
+
+        File file= Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
+
+        PRDownloader.download(url,file.getPath(), URLUtil.guessFileName(url,null,null))
+                .build()
+                .setOnStartOrResumeListener(new OnStartOrResumeListener() {
+                    @Override
+                    public void onStartOrResume() {
+
+                    }
+                })
+                .setOnPauseListener(new OnPauseListener() {
+                    @Override
+                    public void onPause() {
+
+                    }
+                })
+                .setOnCancelListener(new OnCancelListener() {
+                    @Override
+                    public void onCancel() {
+
+                    }
+                })
+                .setOnProgressListener(new OnProgressListener() {
+                    @Override
+                    public void onProgress(Progress progress) {
+                        Long per=progress.currentBytes*100/progress.totalBytes;
+
+                        pd.setMessage("Downloading: "+per+" %");
+                    }
+                })
+                .start(new OnDownloadListener() {
+                    @Override
+                    public void onDownloadComplete() {
+                        pd.dismiss();
+
+//                        Chats selectedItem=chatsList.get(position);
+//                        String key=selectedItem.getKey();
+//
+//                        StorageReference storageReference=firebaseStorage.getReferenceFromUrl(selectedItem.getImagePost());
+//                        storageReference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void unused) {
+//                                reference.child(key).removeValue();
+//                            }
+//                        });
+
+                        Toast.makeText(MessageActivity.this,"Done",Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(Error error) {
+                        Toast.makeText(MessageActivity.this,"Not Done",Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
     private void Status(String status){

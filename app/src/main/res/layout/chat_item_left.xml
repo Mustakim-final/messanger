@@ -25,6 +25,7 @@
             android:text="Hello"
             android:layout_marginLeft="15dp"
             android:padding="10dp"
+            android:textIsSelectable="true"
             android:id="@+id/chat_text_ID"
             android:textSize="20sp"
             android:layout_toRightOf="@id/chat_image_ID"

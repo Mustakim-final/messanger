@@ -1,28 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_weight="3"
+    android:background="#3C50C6"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".StartActivity">
 
-    <Button
-        android:id="@+id/signIn_ID"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign In">
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_weight="1.5">
 
-    </Button>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/signUp_ID"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/signIn_ID"
-        android:text="Sign Up">
+        android:layout_height="0dp"
+        android:layout_weight=".5">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign In"
+                android:visibility="gone"
+                android:textColor="#fff"
+                android:layout_marginRight="5dp"
+                android:id="@+id/signIn_ID">
 
-    </Button>
-</RelativeLayout>
+            </TextView>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                app:lottie_autoPlay="true"
+                app:lottie_rawRes="@raw/chat"
+                app:lottie_loop="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:visibility="gone"
+                android:text="Sign Up"
+                android:id="@+id/signUpIn_ID">
+
+            </TextView>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:text="version:1.0.0"
+                android:textColor="#fff">
+
+            </TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15sp"
+                android:text="Development by RMB"
+                android:textColor="#fff">
+
+            </TextView>
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>

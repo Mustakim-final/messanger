@@ -81,7 +81,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         }
 
         if (isChat){
-            //LastMessage(users.getId(),holder.lastMessageText);
+            LastMessage(users.getId(),holder.lastMessageText);
         }else {
             holder.lastMessageText.setVisibility(View.GONE);
         }
@@ -125,7 +125,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     }
 
 
-    /*
+
 
     public void LastMessage(final String userID,final TextView lastMessageText){
 
@@ -142,9 +142,6 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
                     if (firebaseUser!=null && chats!=null){
                         if (chats.getSender().equals(userID) && chats.getReciver().equals(firebaseUser.getUid()) || chats.getSender().equals(firebaseUser.getUid()) && chats.getReciver().equals(userID)){
                             lastMessage=chats.getMessage();
-                        }
-                        if (chats.getSender().equals(userID) && chats.getReciver().equals(firebaseUser.getUid()) || chats.getSender().equals(firebaseUser.getUid()) && chats.getReciver().equals(userID)){
-                            lastMessage1=chats.getImagePost();
                         }
                     }
                 }
@@ -166,5 +163,5 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
         });
     }
 
-     */
+
 }

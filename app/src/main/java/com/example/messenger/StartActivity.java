@@ -2,47 +2,52 @@ package com.example.messenger;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class StartActivity extends AppCompatActivity implements View.OnClickListener{
+import java.util.Timer;
+import java.util.TimerTask;
 
-    @Override
-    protected void onStart() {
-        FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        if (firebaseUser!=null){
-            Intent intent=new Intent(StartActivity.this,HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
-        super.onStart();
-    }
+public class StartActivity extends AppCompatActivity {
 
-    private Button buttonSignIn,buttonSignUp;
+    Timer timer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
 
-        buttonSignIn=findViewById(R.id.signIn_ID);
-        buttonSignUp=findViewById(R.id.signUp_ID);
-        buttonSignIn.setOnClickListener(this);
-        buttonSignUp.setOnClickListener(this);
+        onConnection();
+
+
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId()==R.id.signIn_ID){
-            Intent intent=new Intent(StartActivity.this,MainActivity.class);
-            startActivity(intent);
-        }else if (v.getId()==R.id.signUp_ID){
-            Intent intent=new Intent(StartActivity.this,Registration.class);
-            startActivity(intent);
+
+    public void onConnection(){
+        ConnectivityManager manager= (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo info= manager.getActiveNetworkInfo();
+
+        if (info!=null){
+            timer=new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    Intent intent=new Intent(StartActivity.this,MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            },2000);
+
+        }else {
+            Toast.makeText(StartActivity.this,"কোন ইন্টারনেট সংযোগ নেই",Toast.LENGTH_LONG).show();
         }
     }
 }

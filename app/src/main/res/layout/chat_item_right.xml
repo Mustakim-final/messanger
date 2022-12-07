@@ -28,6 +28,7 @@
             android:layout_alignParentRight="true"
             android:background="@drawable/right_chat_draw"
             android:padding="10dp"
+            android:textIsSelectable="true"
             android:text="hello"
             android:textSize="20sp">
 
