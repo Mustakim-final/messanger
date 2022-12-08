@@ -27,4 +27,15 @@
 
     </TextView>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textIsSelectable="true"
+        android:paddingTop="15dp"
+        android:text="Gmail: mdmustakim855@gmail.com"
+        android:textSize="20sp">
+
+    </TextView>
+
 </LinearLayout>
