@@ -424,7 +424,7 @@ public class MessageActivity extends AppCompatActivity {
                             request.setDescription("Downloading file...");
                             request.allowScanningByMediaScanner();
                             request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis());
+                            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS,""+System.currentTimeMillis()+".jpg");
 
 
                             DownloadManager manager= (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
