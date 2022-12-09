@@ -38,4 +38,11 @@
 
     </TextView>
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/profile_pic"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerVertical="true"
+        android:scaleType="fitXY" />
+
 </LinearLayout>

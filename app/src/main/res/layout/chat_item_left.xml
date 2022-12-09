@@ -14,7 +14,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="37dp"
             android:layout_height="37dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/ic_baseline_person_24"
             android:visibility="gone"
             android:id="@+id/chat_image_ID">
         </de.hdodenhof.circleimageview.CircleImageView>
@@ -27,7 +27,7 @@
             android:padding="10dp"
             android:textIsSelectable="true"
             android:id="@+id/chat_text_ID"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_toRightOf="@id/chat_image_ID"
             android:background="@drawable/left_chat_draw">
 

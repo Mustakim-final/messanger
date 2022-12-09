@@ -14,7 +14,7 @@
             android:id="@+id/chat_image_ID"
             android:layout_width="37dp"
             android:layout_height="37dp"
-            android:src="@mipmap/ic_launcher_round"
+            android:src="@drawable/ic_baseline_person_24"
             android:visibility="gone">
 
 
@@ -24,13 +24,14 @@
             android:id="@+id/chat_text_ID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:background="@drawable/right_chat_draw"
             android:padding="10dp"
             android:textIsSelectable="true"
             android:text="hello"
-            android:textSize="20sp">
+            android:textSize="15sp">
 
         </TextView>
 

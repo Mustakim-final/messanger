@@ -44,7 +44,7 @@ public class StartActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-            },2000);
+            },1000);
 
         }else {
             Toast.makeText(StartActivity.this,"কোন ইন্টারনেট সংযোগ নেই",Toast.LENGTH_LONG).show();

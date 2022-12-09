@@ -143,7 +143,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Users users=snapshot.getValue(Users.class);
                 profileText.setText(users.getUsername());
-
+                //Glide.with(this).load(users.getImageUrL()).into()
                 readMessage(myId,userID,users.getImageUrL());
             }
 
@@ -325,6 +325,7 @@ public class MessageActivity extends AppCompatActivity {
     }
 
     private void sendNotitfication(String userID, String username, String msg) {
+
         DatabaseReference tokens=FirebaseDatabase.getInstance().getReference("token");
 
         Query query=tokens.orderByKey().equalTo(userID);
